@@ -7,7 +7,7 @@ import {authRoutes, publicRoutes} from "./utils/routes";
 import {LOGIN_ROUTE} from "./utils/consts";
 
 const AppRouter = () => {
-    const isAuth = true;
+    const isAuth = false;
     return (
 
             <Routes>
