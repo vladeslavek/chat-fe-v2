@@ -9,7 +9,10 @@ const ChatPage = () => {
         console.log(messages)
         messages.push(message)
     }
-
+     const logOut = () => {
+        localStorage.removeItem('token')
+         navigate(LOGIN_ROUTE)
+    }
 
     let messages = [
         {
@@ -44,7 +47,7 @@ const ChatPage = () => {
                            onChange={e => setMessage({text: e.currentTarget.value})}/>
                         <button onClick={() => {sendMessage()}}>Send</button>
             </div>
-            <button onClick={() => {navigate(LOGIN_ROUTE);}}>Выйти</button>
+            <button onClick={() => {logOut();}}>Выйти</button>
         </div>
     );
 };
