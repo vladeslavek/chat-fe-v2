@@ -1,8 +1,9 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
-import {LOGIN_ROUTE} from "../utils/consts";
+import {NavLink, useNavigate} from "react-router-dom";
+import {CHAT_ROUTE, LOGIN_ROUTE} from "../utils/consts";
 
 const RegistrationPage = () => {
+    const navigate = useNavigate()
     return (
         <div>
             <label>Username</label>
@@ -11,6 +12,7 @@ const RegistrationPage = () => {
             <input type="password" name="password" placeholder="password" />
             Уже есть аккаунт?
             <NavLink to={LOGIN_ROUTE}> Войти!</NavLink>
+            <button onClick={() => navigate(CHAT_ROUTE)}>Зарегистрироваться</button>
         </div>
     );
 };
