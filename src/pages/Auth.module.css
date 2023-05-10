@@ -1,0 +1,44 @@
+.contentBlock {
+    padding-top: 15%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textBlock {
+    margin-bottom: 6px;
+    font-family: 'Abel';
+    font-size: 20px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #2C2C2E;
+}
+.inputBlock {
+    margin-bottom: 6px;
+    font-size: 20px;
+    width: 100%;
+    box-sizing:border-box;
+    font-family: 'Abel';
+    display: flex;
+    border: 1px solid #818182;
+    border-radius: 20px;
+}
+
+.btn {
+    margin: 6px;
+    font-family: 'Abel';
+    font-size: 20px;
+    background: #8A9199;
+    border-radius: 20px;
+    font-color: #FFFFFF;
+}
+.lilTextBlock {
+    font-family: 'Abel';
+    font-size: 16px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    color: #2C2C2E;
+}

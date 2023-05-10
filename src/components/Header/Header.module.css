@@ -1,0 +1,23 @@
+.headerBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #E5E5EA;
+    height: 66px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.headerText {
+    font-family: 'Abel';
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.exitContainer {
+    position: absolute;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
