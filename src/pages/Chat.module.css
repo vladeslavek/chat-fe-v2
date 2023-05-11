@@ -4,7 +4,7 @@
     justify-content: flex-end;
     margin-left: auto;
     margin-bottom: 8px;
-    max-width: 205px;
+    max-width: 285px;
     background: #ECEBEB;
     border-radius: 20px;
 }
@@ -78,6 +78,7 @@
     border-radius: 30px;
 }
 .btn {
+    cursor: pointer;
     position: absolute;
     left: 90%;
     font-family: Abel;
@@ -90,4 +91,12 @@
 }
 .footer {
     border: 2px solid #ECEBEB;
+}
+.actions {
+    cursor: pointer;
+    margin: 10px;
+    font-family: Abel;
+    color: cornflowerblue;
+    font-size: 12px;
+    text-align: end;
 }

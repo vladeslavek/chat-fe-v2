@@ -54,7 +54,7 @@ const ChatPage = () => {
         {
             "id": 86,
             "sender_id": 0,
-            "sender": "usertddfadf",
+            "sender": "usert",
             "text": "asdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasd",
             "timestamp": "1683234931523"
         },
@@ -104,18 +104,18 @@ const ChatPage = () => {
 
     const socket = new WebSocket('ws://127.0.0.1/ws');
     const {currentUser} = useAuth()
-    socket.onopen = function() {
+    socket.onopen = function () {
         console.log('Соединение установлено');
     };
 
-    socket.onmessage = function(event) {
+    socket.onmessage = function (event) {
         console.log(event.data)
     }
-    socket.onclose = function(event) {
+    socket.onclose = function (event) {
         console.log('Соединение закрыто');
     };
 
-    socket.onerror = function(error) {
+    socket.onerror = function (error) {
         console.log(`Ошибка: ${error.message}`);
     };
     return (
@@ -129,6 +129,12 @@ const ChatPage = () => {
                                 <div className={styles.selfMessageContainer}>
                                     <p className={styles.selfMessage}>
                                         {message.text}
+                                    </p>
+                                    <p className={styles.actions} >
+                                        Delete
+                                    </p>
+                                    <p className={styles.actions} >
+                                        Edit
                                     </p>
                                 </div>
                                 <p className={styles.selfTime} >
@@ -156,6 +162,7 @@ const ChatPage = () => {
             </div>
             <div className={styles.footer}>
                 <input
+                    id="scroll"
                     className={styles.inputBlock}
                     placeholder="type here..."/>
                 <button className={styles.btn} onClick={() => {socket.send('{"sender_id":10,"timestamp":"1683756127129","text":"AAAAAAAAAAAAAAAAAAA "}'); console.log("aboba")}}>➜</button>
