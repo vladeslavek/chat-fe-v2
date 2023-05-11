@@ -1,0 +1,93 @@
+.selfMessageContainer {
+    margin-top: 4px;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-bottom: 8px;
+    max-width: 205px;
+    background: #ECEBEB;
+    border-radius: 20px;
+}
+.otherMessageContainer {
+    margin-top: 4px;
+    max-width: 205px;
+    display: flex;
+    margin-right: 16px;
+    margin-bottom: 4px;
+    background: white;
+    border-radius: 20px;
+    border: 2px solid #ECEBEB;
+}
+.selfMessage {
+    max-width: 145px;
+    word-wrap: break-word;
+    color: black;
+    font-family: Abel;
+    font-size: 20px;
+    margin: 5px;
+    padding: 1px 25px;
+    line-height: 20px;
+    overflow-wrap: break-word;
+}
+
+.otherMessage {
+    max-width: 145px;
+    word-wrap: break-word;
+    color: black;
+    font-family: Abel;
+    font-size: 20px;
+    margin: 5px;
+    padding: 1px 25px;
+    line-height: 20px;
+    overflow-wrap: break-word;
+}
+.chatPage {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    height: 86vh;
+}
+.sender {
+    margin-top: 18px;
+    font-family: Abel;
+    font-size: 15px;
+    margin-bottom: -4px;
+}
+.time {
+    font-family: Abel;
+    font-size: 12px;
+    margin: 2px;
+}
+.selfTime {
+    margin: 2px;
+    font-family: Abel;
+    font-size: 12px;
+    text-align: end;
+}
+.inputBlock {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10%;
+    width: 80%;
+    font-size: 20px;
+    display: flex;
+    box-sizing: border-box;
+    font-family: 'Abel';
+    display: flex;
+    border: 1px solid #818182;
+    border-radius: 30px;
+}
+.btn {
+    position: absolute;
+    left: 90%;
+    font-family: Abel;
+    font-size: 16px;
+    margin-top: -36px;
+    background: #8A9199;
+    border-radius: 20px;
+    border: none;
+    color: #FFFFFF;
+}
+.footer {
+    border: 2px solid #ECEBEB;
+}
