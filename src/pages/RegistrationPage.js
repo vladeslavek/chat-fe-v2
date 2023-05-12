@@ -1,10 +1,8 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {NavLink, useNavigate} from "react-router-dom";
-import {CHAT_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
+import {CHAT_ROUTE, LOGIN_ROUTE } from "../utils/consts";
 import Header from "../components/Header/Header";
 import styles from "./Auth.module.css";
-import {loginUser, registerUser} from "../service/authAPI";
-import {AuthContext} from "../index";
 import {useAuth} from "../auth";
 
 const RegistrationPage = () => {

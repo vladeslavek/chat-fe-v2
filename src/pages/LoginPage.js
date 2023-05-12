@@ -1,10 +1,8 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {CHAT_ROUTE, REGISTRATION_ROUTE} from "../utils/consts";
 import {NavLink, useNavigate} from "react-router-dom";
-import {loginUser} from "../service/authAPI";
 import Header from "../components/Header/Header";
 import styles from './Auth.module.css'
-import {AuthContext} from "../index";
 import {useAuth} from "../auth";
 
 const LoginPage = () => {
