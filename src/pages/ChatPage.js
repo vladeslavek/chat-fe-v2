@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import Header from "../components/Header/Header";
 import {$auth_host} from "../service";
 import {useAuth} from "../auth";
@@ -11,10 +11,11 @@ const ChatPage = () => {
     const [action, setAction] = useState('send')
     const [messages, setMessages] = useState([])
     const [editMessageId, setEditMessageId] = useState('');
-    const [editMessage, setEditMessage] = useState('')
+    const [inputField, setInputField] = useState('')
+    const messagesDiv = useRef(null);
 
     const socket = useMemo(() => {
-        const ws = new WebSocket('ws://127.0.0.1/ws');
+        const ws = new WebSocket('ws://127.0.0.1:80/ws');
         return ws;
     }, [])
 
@@ -23,7 +24,7 @@ const ChatPage = () => {
     socket.onopen = function () {
         console.log('Соединение установлено');
     };
-    socket.onclose = function (event) {
+    socket.onclose = function () {
         console.log('Соединение закрыто');
     };
 
@@ -40,13 +41,12 @@ const ChatPage = () => {
         hours %= 12; // Приводим часы к 12-часовому формату
         hours = hours || 12; // Если часы равны 0, то присваиваем значение 12
 
-        const timeString = `${hours}:${minutes < 10 ? '0' : ''}${minutes}${ampm}`; // Собираем строку времени
-        return timeString
+        return `${hours}:${minutes < 10 ? '0' : ''}${minutes}${ampm}`; // Собираем строку времени
 
     }
     const handleEditMessage = (msg) => {
         setAction('edit')
-        setEditMessage(msg.text)
+        setInputField(msg.text)
         setEditMessageId(msg.id)
     }
 
@@ -61,8 +61,14 @@ const ChatPage = () => {
 
     useEffect(() => {
         setLoading(true)
+
         socket.onmessage = function (event) {
             setMessages(JSON.parse(event.data))
+            
+            messagesDiv.current.scroll({
+                top: messagesDiv.current.scrollHeight + 300,
+                behavior: 'smooth'
+            });
         }
         setLoading(false)
     }, [socket]);
@@ -75,14 +81,23 @@ const ChatPage = () => {
         }));
     }
     const handleSendMessage = () => {
-        const date = (Number(Date.now()/1000)).toString()
+        if (inputField === '') {
+            alert("Message cannot be empty")
+            return
+        }
+        if (inputField.length > 255 ) {
+            alert("Your message is too long")
+            return
+        }
+
+        const date = Math.ceil(Number(Date.now() / 1000)).toString()
         const id = jwt_decode(localStorage.getItem('token')).sub
         const message = (action === 'edit') ?
             {
                 "action": "edit",
                 "message": {
                     "message_id": editMessageId,
-                    "new_text": editMessage
+                    "new_text": inputField
                 }
             }
             :
@@ -91,11 +106,11 @@ const ChatPage = () => {
                 "message": {
                     "sender_id": id,
                     "timestamp": date,
-                    "text": editMessage
+                    "text": inputField
                 }
             };
         setAction('')
-        setEditMessage('')
+        setInputField('')
         setEditMessageId(null)
         socket.send(JSON.stringify(message))
     }
@@ -107,7 +122,7 @@ const ChatPage = () => {
 
                 </div>
                 :
-                <div className={styles.chatPage}>
+                <div className={styles.chatPage} ref={messagesDiv}>
                     {messages.map((msg,index) => (
                         <Message key={index}
                                  message={msg}
@@ -121,8 +136,8 @@ const ChatPage = () => {
             <div className={styles.footer}>
                 <input
                     id="scroll"
-                    value={editMessage || ""}
-                    onChange={e => setEditMessage(e.target.value)}
+                    value={inputField || ""}
+                    onChange={e => setInputField(e.target.value)}
                     className={styles.inputBlock}
                     placeholder="type here..."/>
                 <button className={styles.btn} onClick={() => {handleSendMessage()}}>➜</button>

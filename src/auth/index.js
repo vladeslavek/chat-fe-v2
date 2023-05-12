@@ -5,7 +5,6 @@ import {
     useContext
 } from 'react';
 import {fetchLogin, loginUser, registerUser} from "../service/authAPI";
-import axios from "axios";
 import jwt_decode from 'jwt-decode'
 
 const AuthContext = createContext({});
@@ -16,8 +15,6 @@ function Auth({ children }) {
     const [isAuth, setIsAuth] = useState(false);
     const [isAuthChecked, setIsAuthChecked] = useState(false);
     const [currentUser, setCurrentUser] = useState('');
-    const [currentUserId, setCurrentUserId] = useState()
-    const getSessionFromStorage = () => 'Bearer ' + localStorage.getItem('token');
 
     const login = async (login, password) => {
         await loginUser(login, password);
