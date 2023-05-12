@@ -1,57 +1,49 @@
 .selfMessageContainer {
-    margin-top: 4px;
-    display: flex;
-    justify-content: flex-end;
-    margin-left: auto;
-    margin-bottom: 8px;
-    max-width: 285px;
     background: #ECEBEB;
     border-radius: 20px;
+    min-width: 50px;
+    max-width: 300px;
+    margin-left: auto;
 }
 .otherMessageContainer {
-    margin-top: 4px;
-    max-width: 205px;
-    display: flex;
-    margin-right: 16px;
-    margin-bottom: 4px;
+    min-width: 50px;
+    max-width: 300px;
     background: white;
     border-radius: 20px;
     border: 2px solid #ECEBEB;
 }
 .selfMessage {
-    max-width: 145px;
     word-wrap: break-word;
     color: black;
     font-family: Abel;
     font-size: 20px;
     margin: 5px;
-    padding: 1px 25px;
+    padding: 10px 10px;
     line-height: 20px;
     overflow-wrap: break-word;
 }
 
 .otherMessage {
-    max-width: 145px;
     word-wrap: break-word;
     color: black;
     font-family: Abel;
     font-size: 20px;
     margin: 5px;
-    padding: 1px 25px;
+    padding: 10px 10px;
     line-height: 20px;
     overflow-wrap: break-word;
 }
 .chatPage {
     overflow-y: scroll;
     display: flex;
-    flex-direction: column;
-    height: 86vh;
+    flex-direction: column-reverse;
+    height: 80vh;
 }
 .sender {
     margin-top: 18px;
     font-family: Abel;
     font-size: 15px;
-    margin-bottom: -4px;
+    margin-bottom: 1px;
 }
 .time {
     font-family: Abel;
@@ -94,9 +86,14 @@
 }
 .actions {
     cursor: pointer;
-    margin: 10px;
+    margin-left: 10px;
     font-family: Abel;
     color: cornflowerblue;
     font-size: 12px;
     text-align: end;
+}
+.actionsContainer {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
 }
