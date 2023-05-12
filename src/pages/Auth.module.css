@@ -1,5 +1,5 @@
 .contentBlock {
-    padding-top: 15%;
+    padding-top: 20%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -7,38 +7,43 @@
 }
 
 .textBlock {
-    margin-bottom: 6px;
-    font-family: 'Abel';
+    margin-top: 10px;
+    font-family: Abel;
     font-size: 20px;
     line-height: 22px;
     display: flex;
-    align-items: center;
+    justify-content: center;
     color: #2C2C2E;
 }
+
 .inputBlock {
-    margin-bottom: 6px;
+    margin-top: 10px;
     font-size: 20px;
     width: 100%;
     box-sizing:border-box;
-    font-family: 'Abel';
+    font-family: Abel;
     display: flex;
     border: 1px solid #818182;
     border-radius: 20px;
 }
 
 .btn {
-    margin: 6px;
-    font-family: 'Abel';
+    margin: 10px;
+    font-family: Abel;
     font-size: 20px;
     background: #8A9199;
     border-radius: 20px;
-    font-color: #FFFFFF;
+    border: none;
+    padding: 1px 20px;
+    color: #FFFFFF;
 }
+
 .lilTextBlock {
-    font-family: 'Abel';
+    margin: 10px;
+    font-family: Abel;
     font-size: 16px;
     line-height: 18px;
     display: flex;
-    align-items: center;
+    justify-content: center;
     color: #2C2C2E;
 }

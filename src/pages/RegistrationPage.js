@@ -45,11 +45,13 @@ const RegistrationPage = () => {
                             className={styles.inputBlock}
                             value={password}
                             onChange={e => setPassword(e.target.value)}
-                            placeholder=" password"/>
+                            placeholder=" password"
+                            type="password"
+                        />
                     </div>
                     <div className={styles.lilTextBlock}>
                         Have account?
-                        <NavLink className={styles.lilTextBlock} to={LOGIN_ROUTE}>Sigh in!</NavLink>
+                        <NavLink to={LOGIN_ROUTE}>Sign in!</NavLink>
                     </div>
                 </div>
                 <div>

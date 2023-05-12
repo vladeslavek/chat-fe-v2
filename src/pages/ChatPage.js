@@ -1,15 +1,12 @@
-import React, {useContext, useEffect, useMemo, useState} from 'react';
-import {useNavigate} from "react-router-dom";
-import {LOGIN_ROUTE} from "../utils/consts";
+import React, {useEffect, useMemo, useState} from 'react';
 import Header from "../components/Header/Header";
 import {$auth_host} from "../service";
 import {useAuth} from "../auth";
 import styles from './Chat.module.css'
-import axios from "axios";
 import jwt_decode from "jwt-decode";
+import Message from "../components/Message/Message";
 
 const ChatPage = () => {
-    const navigate = useNavigate()
     const [loading, setLoading] = useState(true);
     const [action, setAction] = useState('send')
     const [messages, setMessages] = useState([])
@@ -78,8 +75,7 @@ const ChatPage = () => {
         }));
     }
     const handleSendMessage = () => {
-        const date = (Date.now()/1000).toString()
-        console.log(date)
+        const date = (Number(Date.now()/1000)).toString()
         const id = jwt_decode(localStorage.getItem('token')).sub
         const message = (action === 'edit') ?
             {
@@ -98,7 +94,6 @@ const ChatPage = () => {
                     "text": editMessage
                 }
             };
-        console.log(message)
         setAction('')
         setEditMessage('')
         setEditMessageId(null)
@@ -113,45 +108,14 @@ const ChatPage = () => {
                 </div>
                 :
                 <div className={styles.chatPage}>
-                    {messages.map((message,index) => (
-                        currentUser === message.sender ?
-                            <div key={index}>
-                                <div className={styles.selfMessageContainer}>
-                                    <p className={styles.selfMessage}
-                                    >
-                                        {message.text}
-                                    </p>
-                                    <div className={styles.actionsContainer}>
-                                        <p className={styles.actions}
-                                           onClick={() => handleDeleteMessage(message.id)}
-                                        >
-                                            Delete
-                                        </p>
-                                        <p className={styles.actions} onClick={() => handleEditMessage(message)}>
-                                            Edit
-                                        </p>
-                                    </div>
-                                </div>
-                                <p className={styles.selfTime} >
-                                    {parseTimestamp(message.timestamp)}
-                                </p>
-                            </div>
-                            :
-                            <div key={index}>
-                                <p className={styles.sender}>
-                                    {message.sender}
-                                </p>
-
-                                <div className={styles.otherMessageContainer}>
-                                    <p className={styles.otherMessage}>
-                                        {message.text}
-                                    </p>
-                                </div>
-
-                                <p className={styles.time}>
-                                    {parseTimestamp(message.timestamp)}
-                                </p>
-                            </div>
+                    {messages.map((msg,index) => (
+                        <Message key={index}
+                                 message={msg}
+                                 currentUser={currentUser}
+                                 onEdit={() => handleEditMessage(msg)}
+                                 onDelete={() => handleDeleteMessage(msg.id)}
+                                 time={parseTimestamp(msg.timestamp)}
+                        />
                     ))}
                 </div>}
             <div className={styles.footer}>

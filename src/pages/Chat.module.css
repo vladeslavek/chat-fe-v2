@@ -36,7 +36,7 @@
 .chatPage {
     overflow-y: scroll;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     height: 80vh;
 }
 .sender {
